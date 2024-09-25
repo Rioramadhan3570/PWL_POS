@@ -28,7 +28,7 @@
     </a>
 
     <!-- Sidebar -->
-    @include('layouts.siderbar')
+    @include('layouts.sidebar')
     <!-- /.sidebar -->
   </aside>
 
