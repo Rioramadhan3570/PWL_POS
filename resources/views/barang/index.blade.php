@@ -5,7 +5,7 @@
             <h3 class="card-title">Daftar barang</h3>
             <div class="card-tools">
                 <button onclick="modalAction('{{ url('/barang/import') }}')" class="btn btn-info">Import Barang</button>
-                <a href="{{ url('/barang/create') }}" class="btn btn-primary">Tambah Data</a>
+                <a href="{{ url('/barang/export_excel') }}" class="btn btn-primary"><i class="fa fa-fileexcel"></i> Export Barang</a>
                 <button onclick="modalAction('{{ url('/barang/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <table class="table table-bordered table-sm table-striped table-hover" id="table-barang">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>No</th>
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Harga Beli</th>
@@ -77,8 +77,8 @@
                     }
                 },
                 columns: [{
-                        data: "barang_id",
-                        className: "text-center",
+                        data: "DT_RowIndex",
+                        className: 'text-center',
                         width: "5%",
                         orderable: false,
                         searchable: false
