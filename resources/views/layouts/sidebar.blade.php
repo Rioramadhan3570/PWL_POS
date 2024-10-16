@@ -19,6 +19,12 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ url('/profil') }}" class="nav-link {{ $activeMenu == 'profil' ? 'active' : '' }} ">
+                    <i class="nav-icon fas fa-user-cog"></i>
+                    <p>Profil</p>
+                </a>
+            </li>
             <li class="nav-header">Data Pengguna</li>
             <li class="nav-item">
                 <a href="{{ url('/level') }}" class="nav-link {{ $activeMenu == 'level' ? 'active' : '' }} ">
@@ -32,13 +38,14 @@
                     <p>Data User</p>
                 </a>
             </li>
-            <li class="nav-header">Data Barang</li>
+            <li class="nav-header">Data Supplier</li>
             <li class="nav-item">
                 <a href="{{ url('/supplier') }}" class="nav-link {{ ($activeMenu == 'supplier')? 'active' : '' }} ">
                     <i class="nav-icon fa fa-truck"></i>
                     <p>Data Supplier</p>
                 </a>
             </li>
+            <li class="nav-header">Data Barang</li>
             <li class="nav-item">
                 <a href="{{ url('/kategori') }}" class="nav-link {{ $activeMenu == 'kategori' ? 'active' : '' }} ">
                     <i class="nav-icon far fa-bookmark"></i>
