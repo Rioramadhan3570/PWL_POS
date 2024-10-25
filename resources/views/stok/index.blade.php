@@ -18,21 +18,34 @@
             @if (session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
-            <div id="filter" class="form-horizontal filter-date p-2 border-bottom mb-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group form-group-sm row text-sm mb-0">
-                            <label for="filter_date" class="col-md-1 col-form-label">Filter</label>
-                            <div class="col-md-3">
-                                <select name="filter_barang" class="form-control form-control-sm filter_barang">
-                                    <option value="">- Semua -</option>
-                                    @foreach ($barang as $b)
-                                        <option value="{{ $b->barang_id }}">{{ $b->barang_nama }}</option>
-                                    @endforeach
-                                </select>
-                                <small class="form-text text-muted">Nama Barang</small>
-                            </div>
-                        </div>
+            <div id="filter" class="form-horizontal p-2 border-bottom mb-2">
+                <div class="row align-items-center">
+                    <div class="col-md-2">
+                        <label for="filter_supplier" class="col-form-label">Nama Supplier</label>
+                        <select name="filter_supplier" class="form-control form-control-sm filter_supplier">
+                            <option value="">- Semua -</option>
+                            @foreach ($supplier as $s)
+                                <option value="{{ $s->supplier_id }}">{{ $s->supplier_nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="filter_barang" class="col-form-label">Nama Barang</label>
+                        <select name="filter_barang" class="form-control form-control-sm filter_barang">
+                            <option value="">- Semua -</option>
+                            @foreach ($barang as $b)
+                                <option value="{{ $b->barang_id }}">{{ $b->barang_nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="filter_user" class="col-form-label">Penginput</label>
+                        <select name="filter_user" class="form-control form-control-sm filter_user">
+                            <option value="">- Semua -</option>
+                            @foreach ($user as $u)
+                                <option value="{{ $u->user_id }}">{{ $u->nama }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -76,6 +89,8 @@
                     "type": "POST",
                     "data": function(d) {
                         d.filter_barang = $('.filter_barang').val();
+                        d.filter_supplier = $('.filter_supplier').val();
+                        d.filter_user = $('.filter_user').val();
                     }
                 },
                 columns: [{
@@ -130,6 +145,14 @@
             });
 
             $('.filter_barang').change(function() {
+                dataStok.draw();
+            });
+
+            $('.filter_supplier').change(function() {
+                dataStok.draw();
+            });
+
+            $('.filter_user').change(function() {
                 dataStok.draw();
             });
         });

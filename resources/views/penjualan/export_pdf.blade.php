@@ -12,6 +12,8 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            page-break-inside: avoid;
+            /* Mencegah tabel terputus di tengah halaman */
         }
 
         td,
@@ -71,14 +73,34 @@
         .border-all td {
             border: 1px solid;
         }
+
+        /* Mencegah baris tabel terpecah antar halaman */
+        tr {
+            page-break-inside: avoid;
+        }
+
+        /* Memastikan header muncul di setiap halaman */
+        thead {
+            display: table-header-group;
+        }
+
+        /* Menghindari pemecahan halaman sebelum bagian tubuh */
+        tbody {
+            page-break-before: auto;
+        }
+
+        /* Mencegah tabel terputus di tengah halaman */
+        table {
+            page-break-after: avoid;
+        }
     </style>
 </head>
 
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img class="image" id="image"
-                    src="{{ public_path('polinema-bw.png') }}">
+            <td width="15%" class="text-center">
+                <img class="image" id="image" src="{{ public_path('polinema-bw.png') }}">
             </td>
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN
@@ -91,7 +113,6 @@
             </td>
         </tr>
     </table>
-
     <h3 class="text-center">LAPORAN DATA PENJUALAN</h3>
     <table class="border-all">
         <thead>
@@ -106,19 +127,23 @@
                 <th>Jumlah</th>
                 <th>Harga</th>
             </tr>
-        </thead>
         <tbody>
             @php
                 $counter = 1;
             @endphp
             @foreach ($penjualan as $penj)
-                @foreach ($penj->penjualan_detail as $detail)
+                @php
+                    $details = $penj->penjualan_detail;
+                @endphp
+                @foreach ($details as $detail)
                     <tr>
-                        <td class="text-center">{{ $counter++ }}</td> <!-- Counter manual -->
-                        <td>{{ $penj->penjualan_tanggal }}</td>
-                        <td>{{ $penj->penjualan_kode }}</td>
-                        <td>{{ $penj->user->nama }}</td>
-                        <td>{{ $penj->pembeli }}</td>
+                        @if ($loop->first)
+                            <td rowspan="{{ count($details) }}">{{ $counter++ }}</td>
+                            <td rowspan="{{ count($details) }}">{{ $penj->penjualan_tanggal }}</td>
+                            <td rowspan="{{ count($details) }}">{{ $penj->penjualan_kode }}</td>
+                            <td rowspan="{{ count($details) }}">{{ $penj->user->nama }}</td>
+                            <td rowspan="{{ count($details) }}">{{ $penj->pembeli }}</td>
+                        @endif
                         <td>{{ $detail->barang_id }}</td>
                         <td>{{ $detail->barang->barang_nama }}</td>
                         <td>{{ $detail->jumlah }}</td>
