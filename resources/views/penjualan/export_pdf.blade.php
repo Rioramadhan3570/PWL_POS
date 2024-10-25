@@ -98,9 +98,9 @@
             <tr>
                 <th class="text-center">No</th>
                 <th>Tanggal Penjualan</th>
+                <th>Kode Penjualan</th>
                 <th>User ID</th>
                 <th>Nama Pembeli</th>
-                <th>Kode Penjualan</th>
                 <th>Barang ID</th>
                 <th>Nama Barang</th>
                 <th>Jumlah</th>
@@ -116,9 +116,9 @@
                     <tr>
                         <td class="text-center">{{ $counter++ }}</td> <!-- Counter manual -->
                         <td>{{ $penj->penjualan_tanggal }}</td>
+                        <td>{{ $penj->penjualan_kode }}</td>
                         <td>{{ $penj->user->nama }}</td>
                         <td>{{ $penj->pembeli }}</td>
-                        <td>{{ $penj->penjualan_kode }}</td>
                         <td>{{ $detail->barang_id }}</td>
                         <td>{{ $detail->barang->barang_nama }}</td>
                         <td>{{ $detail->jumlah }}</td>
