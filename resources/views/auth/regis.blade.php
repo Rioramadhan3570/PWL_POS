@@ -44,10 +44,10 @@
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ url('/') }}" class="h1"><b>Admin</b>LTE</a>
+                <a href="{{ url('/') }}" class="h1"><b>PWL_</b>POS</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Register a New User</p>
+                <p class="login-box-msg">Buat Akun Baru</p>
                 <form action="{{ url('register') }}" method="POST" id="form-register" class="form-horizontal">
                     @csrf
                     <div class="form-group row">
@@ -92,15 +92,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-4 control-label col-form-label">Confirm Password</label>
+                        <label class="col-4 control-label col-form-label">Ulangi Password</label>
                         <div class="col-8">
                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-8 offset-4">
-                            <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                             <a class="btn btn-sm btn-default ml-1" href="{{ url('login') }}">Kembali</a>
+                            <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                         </div>
                     </div>
                 </form>

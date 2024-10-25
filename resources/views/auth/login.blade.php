@@ -28,10 +28,10 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ url('/') }}" class="h1"><b>Admin</b>LTE</a>
+                <a href="{{ url('/') }}" class="h1"><b>PWL_</b>POS</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Selamat Datang! Silahkan Masukkan Username & Password</p>
 
                 <form action="{{ url('login') }}" method="POST" id="form-login">
                     @csrf
@@ -61,18 +61,18 @@
                         <div class="col-8">
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember">
-                                <label for="remember">Remember Me</label>
+                                <label for="remember">Ingat Saya</label>
                             </div>
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
                 <p class="mt-3 mb-1">
-                    <a href="{{ url('register') }}">Register a new account</a>
+                    <a href="{{ url('register') }}">Belum Punya Akun?</a>
                 </p>
             </div>
             <!-- /.card-body -->

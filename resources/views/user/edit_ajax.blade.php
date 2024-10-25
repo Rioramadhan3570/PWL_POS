@@ -55,11 +55,11 @@
                         <input value="" type="password" name="password" id="password" class="form-control">
                         <small class="form-text text-muted">Abaikan jika tidak ingin ubah
                             password</small>
-                        <small id="error-password" class="error-text form-text textdanger"></small>
+                        <small id="error-password" class="error-text form-text text-danger"></small>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btnwarning">Batal</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </div>

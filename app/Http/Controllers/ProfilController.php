@@ -18,7 +18,7 @@ class ProfilController extends Controller
             'title' => 'Data Profil',
             'list' => [
                 ['name' => 'Home', 'url' => url('/')],
-                ['name' => 'profil', 'url' => url('/profil')]
+                ['name' => 'Profil', 'url' => url('/profil')]
             ]
         ];
 

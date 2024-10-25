@@ -21,7 +21,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{ url('/profil') }}" class="nav-link {{ $activeMenu == 'profil' ? 'active' : '' }} ">
-                    <i class="nav-icon fas fa-user-cog"></i>
+                    <i class="nav-icon fas fa-user-edit"></i>
                     <p>Profil</p>
                 </a>
             </li>
