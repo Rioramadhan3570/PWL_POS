@@ -94,13 +94,37 @@ class PenjualanController extends Controller
         return response()->json($penjualan);
     }
 
-    public function destroy(PenjualanModel $penjualan)
+    public function destroy(Request $request, string $penjualan_id)
     {
-        $penjualan->delete();
+        try {
+            // Cari data penjualan
+            $penjualan = PenjualanModel::findOrFail($penjualan_id);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Data terhapus',
-        ]);
+            // Hapus semua detail penjualan yang terkait
+            PenjualanDetailModel::where('penjualan_id', $penjualan_id)->delete();
+
+            // Hapus data penjualan
+            $penjualan->delete();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Data penjualan berhasil dihapus'
+            ]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Data penjualan tidak ditemukan'
+            ], 404);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Data gagal dihapus karena masih terkait dengan data lain'
+            ], 400);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Terjadi kesalahan saat menghapus data'
+            ], 500);
+        }
     }
 }
